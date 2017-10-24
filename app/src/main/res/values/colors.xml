@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Gray">#AAAAAA</color>
+
+    <color name="PenguinBase">#3F48CC</color>
+    <color name="BirdBase">#FF80A9</color>
+    <color name="BearBase">#C3C3C3</color>
+    <color name="BunBase">#FFC90E</color>
+</resources>

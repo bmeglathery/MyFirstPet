@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My First Pet</string>
+    <string name="default_display_text">Bruce D Fault</string>
+    <string name="death_message">Unfortunately, you have failed to properly take care
+    of your pet...</string>
+    <string name="game_over">GAME OVER</string>
+</resources>

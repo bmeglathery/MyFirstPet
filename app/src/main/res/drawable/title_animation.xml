@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/title_shake01" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake02" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake03" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake04" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake05" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake06" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake07" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake08" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake09" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake10" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake11" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake12" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake13" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake14" android:duration="100"/>
+    <item android:drawable="@drawable/title_shake15" android:duration="100"/>
+</animation-list>

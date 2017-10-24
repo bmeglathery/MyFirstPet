@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Referenced: https://stackoverflow.com/questions/5049852/android-drawing-separator-divider-line-in-layout
+to discover the 'divider' and 'showDividers' properties
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alpha_background_v2"
+    tools:context="com.bmeglathery.myfirstpet.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/petCanvas"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/alpha_background_v2"
+            android:layout_marginTop="50dp"/>
+
+        <LinearLayout
+            android:id="@+id/buttonsBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:divider="?android:dividerVertical"
+            android:showDividers="middle"
+            android:background="@drawable/border_no_bottom">
+
+            <ImageButton
+                android:id="@+id/status_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/status_button"/>
+
+            <ImageButton
+                android:id="@+id/play_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/play_button"/>
+
+            <ImageButton
+                android:id="@+id/options_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/options_button"/>
+
+            <ImageButton
+                android:id="@+id/clean_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/clean_button"/>
+
+            <ImageButton
+                android:id="@+id/heal_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/heal_button"/>
+
+            <ImageButton
+                android:id="@+id/feed_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/White"
+                android:src="@drawable/feed_button"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

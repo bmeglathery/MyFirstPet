@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alpha_background_v2">
+
+    <!--TODO: Set Title screen layout to mirror layout of main activity - this way
+    users can hit "Play!" and have the title screen fade directly into the main
+    screen users access to interact with their pet-->
+
+    <RelativeLayout
+        android:id="@+id/this_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/TitleAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/PetDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/this_layout">
+
+        <ImageButton
+            android:id="@+id/BeginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/White"
+            android:src="@drawable/begin_button"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
