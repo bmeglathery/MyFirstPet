@@ -16,7 +16,7 @@ import java.util.Random;
 public class Pet implements Parcelable {
 
     private int MAX_STAT = 10;
-    private int DEATH_THRESHOLD = -3;
+    private int DEATH_THRESHOLD = -5;
     private int NUM_OF_PET_TYPES = 4;
 
     public String name;        private int age;
@@ -75,8 +75,8 @@ public class Pet implements Parcelable {
         this.name = "Bruce D Fault";
         this.form = "BABY";
         //this.form = "EGG";
-        this.type = "BIRD";
-        //this.type = randomizePetType();
+        //this.type = "BUN";
+        this.type = randomizePetType();
         this.healthy = true;
         this.clean = true;
         this.age = 0;
@@ -104,6 +104,7 @@ public class Pet implements Parcelable {
         return this.age;
     }
 
+    public void increaseAge() { this.age += 1; }
     private void setAge(int hoursPassed){
         this.age += (hoursPassed / 24);
     }
@@ -205,11 +206,7 @@ public class Pet implements Parcelable {
         if(this.hunger + increase > MAX_STAT) {
             response = "Feeling full!";
             this.hunger = MAX_STAT;
-        }
-        else if(this.hunger > MAX_STAT){
-            response = "Not hungry...";
-        }
-        else {
+        } else {
             response = "Nom nom nom";
             this.hunger += increase;
         }
@@ -295,13 +292,30 @@ public class Pet implements Parcelable {
      * @return response - A message to the user
      */
     public String feed(String form){
-
         String response;
 
         if(form.equals("EGG"))
             response = "You can't feed an egg!";
         else {
             response = setHunger(1);
+        }
+
+        return response;
+    }
+
+    public String play(String form){
+        String response;
+
+        if(form == "EGG"){
+            response = "Careful you don't break the egg...";
+        } else if(getHealthy()) {
+            setAffection(1);
+            setJoy(1);
+            response = getName() + " is having a good time!";
+        } else {
+            setAffection(-1);
+            setJoy(-1);
+            response = getName() + " seems unwell...";
         }
 
         return response;
@@ -343,6 +357,7 @@ public class Pet implements Parcelable {
         //TODO: display death image
         //TODO: display message, "Due to extreme sadness, pet has died..."
     }
+
     public void displayHungerDeath(){
         //TODO: display death image
         //TODO: display message, "Lack of nutrition caused pet's death..."
@@ -363,7 +378,9 @@ public class Pet implements Parcelable {
             return "PENGUIN";
     }
 
-
+    /**
+     * Below are the methods needed to implement the Parcelable class
+     */
 
     @Override
     public String toString() {

@@ -18,6 +18,11 @@ to discover the 'divider' and 'showDividers' properties
         android:background="@drawable/border">
 
         <ImageView
+            android:id="@+id/petCanvasBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
             android:id="@+id/animation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

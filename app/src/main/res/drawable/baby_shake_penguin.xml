@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--TODO: Fill with animation frames! -->
-</selector>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/baby_penguin" android:duration="1000"/>
+</animation-list>

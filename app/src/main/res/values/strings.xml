@@ -4,4 +4,5 @@
     <string name="death_message">Unfortunately, you have failed to properly take care
     of your pet...</string>
     <string name="game_over">GAME OVER</string>
+    <string name="background_image_select_text">Background Image:</string>
 </resources>

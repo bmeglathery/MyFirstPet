@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
@@ -17,6 +18,8 @@ import android.support.v7.widget.DialogTitle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     final int ONE_THIRD_WIDTH = (Resources.getSystem().getDisplayMetrics().widthPixels) / 3;
 
     private ImageView imageView;
+    private ImageView background;
     private RelativeLayout canvas;
     private AnimationDrawable shakeAnimation;
 
@@ -44,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         p = getIntent().getExtras().getParcelable("PET");
 
-        final int INTERVAL  = 1000 * 5; //5 seconds
-        final int DECREASE_INTERVAL = 1000 * 10; //30 seconds
+        final int INTERVAL  = 1000 * 10; //10 seconds
+        final int DECREASE_INTERVAL = 1000 * 30; //30 seconds
+        final int ONE_YEAR = 1000 * 60 * 5; // 5 minutes
 
         final Handler h = new Handler();
 
@@ -69,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 if(p.changeStats(1)) {
                     Intent intent = new Intent(MainActivity.this, DeathActivity.class);
                     startActivity(intent);
+                    // If the DeathActivity is being called, the current pet should 'die',
+                    // and a new Pet will be provided.
+                    p = new Pet();
                     finish();
                 }
                 h.postDelayed(this, DECREASE_INTERVAL);
@@ -80,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         canvas = (RelativeLayout) findViewById(R.id.petCanvas);
         imageView = (ImageView) findViewById(R.id.animation);
+        background = (ImageView) findViewById(R.id.petCanvasBackground);
 
         if(imageView == null) throw new AssertionError();
 
@@ -103,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         if(pet_form.equals("egg")) {
             pet_animation = pet_form + "_shake_" + pet_type;
         } else {
-            //TODO: create xml animation file, mockup version till animations complete
+            //TODO: create xml animation file, mockups in place
             pet_animation = pet_form + "_greet_" + pet_type;
         }
 
@@ -133,21 +142,33 @@ public class MainActivity extends AppCompatActivity {
         statusButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, p.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, p.toString(), Toast.LENGTH_LONG).show();
+
                 //Status dialog
                 Dialog statusDialog = new Dialog(context);
                 statusDialog.setContentView(R.layout.status_layout);
 
+                // Including custom font for a more "Journal" look
+                Typeface myFont = Typeface.createFromAsset(getAssets(), "handwritten.ttf");
+
                 TextView nameTxt = (TextView) statusDialog.findViewById(R.id.petNameTxt);
+                nameTxt.setTypeface(myFont);
                 nameTxt.setText(nameTxt.getText() + p.getName());
 
                 TextView ageTxt = (TextView) statusDialog.findViewById(R.id.petAgeTxt);
+                ageTxt.setTypeface(myFont);
                 ageTxt.setText(ageTxt.getText() + Integer.toString(p.getAge()));
 
                 TextView typeTxt = (TextView) statusDialog.findViewById(R.id.petTypeTxt);
+                typeTxt.setTypeface(myFont);
                 typeTxt.setText(typeTxt.getText() + p.getType());
 
+                TextView fullTxt = (TextView) statusDialog.findViewById(R.id.petFullnessTxt);
+                fullTxt.setTypeface(myFont);
+                fullTxt.setText(fullTxt.getText() + Integer.toString(p.getHunger()));
+
                 TextView joyTxt = (TextView) statusDialog.findViewById(R.id.petJoyTxt);
+                joyTxt.setTypeface(myFont);
                 joyTxt.setText(joyTxt.getText() + Integer.toString(p.getJoy()));
 
                 statusDialog.show();
@@ -157,16 +178,33 @@ public class MainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Play!", Toast.LENGTH_SHORT).show();
-                //Play activity
+                Toast.makeText(context, p.play(p.getForm()), Toast.LENGTH_SHORT).show();
             }
         });
 
         optionsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Options!", Toast.LENGTH_SHORT).show();
-                //Options activity
+                //Toast.makeText(context, "Options!", Toast.LENGTH_SHORT).show();
+                Dialog optionsDialog = new Dialog(context);
+                optionsDialog.setContentView(R.layout.options_layout);
+                optionsDialog.show();
+
+                RadioGroup backgroundSelection =
+                        (RadioGroup) optionsDialog.findViewById(R.id.background_selector);
+
+                // Referenced https://stackoverflow.com/questions/32520850/create-a-custom-dialog-with-radio-buttons-list
+                // to find the method related to RadioGroup's which listens for a change in selection...
+                backgroundSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int buttonId){
+                        if(buttonId == R.id.ocean_background)
+                            background.setBackgroundResource(R.drawable.ocean_view_landscape);
+                        else
+                            background.setBackgroundResource(R.color.White);
+                    }
+                });
+
             }
         });
 
@@ -207,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 banana.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
-                        Toast.makeText(context, "Banana!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, p.feed(p.getForm()), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

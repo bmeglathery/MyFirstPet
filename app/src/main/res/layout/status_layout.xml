@@ -4,38 +4,42 @@
     android:layout_width="500dp"
     android:layout_height="500dp"
     android:paddingLeft="10dp"
-    android:paddingTop="6dp">
+    android:paddingTop="6dp"
+    android:background="@drawable/journal_background">
 
     <TextView
         android:id="@+id/petNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:typeface="serif"
+        android:theme="@style/StatusEntryTheme"
         android:text="Name: "/>
 
     <TextView
         android:id="@+id/petAgeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:typeface="serif"
+        android:theme="@style/StatusEntryTheme"
         android:text="Age: "/>
 
     <TextView
         android:id="@+id/petTypeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:typeface="serif"
+        android:theme="@style/StatusEntryTheme"
         android:text="Type: "/>
+
+    <TextView
+        android:id="@+id/petFullnessTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/StatusEntryTheme"
+        android:text="Fullness: "/>
 
     <TextView
         android:id="@+id/petJoyTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:typeface="serif"
+        android:theme="@style/StatusEntryTheme"
         android:text="Joy: "/>
 
     <!--Populate rest of stats here -->

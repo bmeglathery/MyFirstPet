@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp">
+
+    <TextView
+        android:id="@+id/background_selector_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="24sp"
+        android:text="@string/background_image_select_text"/>
+
+    <RadioGroup
+        android:id="@+id/background_selector"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="3dp">
+
+        <RadioButton
+            android:id="@+id/no_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/RadioButtonTheme"
+            android:text="None"/>
+
+        <RadioButton
+            android:id="@+id/ocean_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/RadioButtonTheme"
+            android:text="Ocean"/>
+
+    </RadioGroup>
+
+</LinearLayout>
